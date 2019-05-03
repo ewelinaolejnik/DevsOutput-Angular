@@ -1,0 +1,17 @@
+<div class="container mt-4">
+  <form (ngSubmit)="onConferencesFilter(formResult)" #formResult="ngForm">
+
+    <div class="row">
+      <div class="form-group">
+        <label for="name">Conference Name</label>
+        <input class="form-control" type="text" id="name" name="name" ngModel>
+      </div>
+    </div>
+      <div class="row mt-4">
+        <div class="mx-auto">
+          <button type="submit" class="btn btn-success">Filter Conferences</button>
+        </div>
+      </div>
+  </form>
+
+</div>

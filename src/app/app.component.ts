@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ConferenceSearchCriteria } from './shared/models/conference-search-criteria.model';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Angular App For Dev\'s Output';
+  conferenceSearchCriteria: ConferenceSearchCriteria;
+
+  onSearchCriteriaGet(searchCriteria: ConferenceSearchCriteria) {
+    this.conferenceSearchCriteria = searchCriteria;
+  }
 }
