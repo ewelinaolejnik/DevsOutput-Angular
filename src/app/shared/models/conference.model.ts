@@ -4,5 +4,5 @@ export class Conference {
   public city: string;
   public country: string;
   public dateFrom: Date;
-  public dateTo: Date;
+  public dateTo?: Date;
 }

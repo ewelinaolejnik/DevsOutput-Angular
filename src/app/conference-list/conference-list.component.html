@@ -1,5 +1,8 @@
 <div class="container mt-4">
-<div class="row">
-    <app-conference-item *ngFor="let conference of conferences | filterConferences:searchCriteria" [conference]="conference"></app-conference-item>
-</div>
+  <div class="row">
+    <app-conference-item
+      *ngFor="let conference of conferences | filterConferences:searchCriteria"
+      [conference]="conference">
+    </app-conference-item>
+  </div>
 </div>

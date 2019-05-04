@@ -10,6 +10,8 @@ import { ConferenceItemComponent } from './conference-list/conference-item/confe
 import { ConferenceListComponent } from './conference-list/conference-list.component';
 import { ConferencesService } from './shared/services/conferences.service';
 import { FilterConferencesPipe } from './shared/filter-conferences.pipe';
+import { CitiesService } from './shared/services/cities.service';
+import { CountriesService } from './shared/services/countries.service';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,7 @@ import { FilterConferencesPipe } from './shared/filter-conferences.pipe';
     AppRoutingModule,
     FormsModule
   ],
-  providers: [ConferencesService],
+  providers: [ConferencesService, CitiesService, CountriesService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
