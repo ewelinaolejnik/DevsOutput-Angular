@@ -12,6 +12,7 @@ import { CountriesService } from '../shared/services/countries.service';
   templateUrl: './conference-filter.component.html'
 })
 export class ConferenceFilterComponent {
+
   @Output('conferencesFilter') conferencesFilterEmitter = new EventEmitter();
   countries: Country[];
   cities: City[];
@@ -26,9 +27,10 @@ export class ConferenceFilterComponent {
     this.conferencesFilterEmitter.emit(formResult.value as ConferenceSearchCriteria);
   }
 
-  onCountrySelected(countryId: number) {
+  onCountrySelected(countryValue: string) {
+    const countryId = Number.parseInt(countryValue.split(':')[1].trim(), 0);
     this.selectedCities = this.cities.filter((item: City) => {
-      return item.countryId == countryId;
+      return item.countryId === countryId;
     });
   }
 
