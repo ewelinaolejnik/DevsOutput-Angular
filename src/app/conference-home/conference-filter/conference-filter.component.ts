@@ -1,10 +1,10 @@
 import { Component, Output, EventEmitter } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { ConferenceSearchCriteria } from '../shared/models/conference-search-criteria.model';
-import { Country } from '../shared/models/country.model';
-import { City } from '../shared/models/city.model';
-import { CitiesService } from '../shared/services/cities.service';
-import { CountriesService } from '../shared/services/countries.service';
+import { ConferenceSearchCriteria } from '../../shared/models/conference-search-criteria.model';
+import { Country } from '../../shared/models/country.model';
+import { City } from '../../shared/models/city.model';
+import { CitiesService } from '../../shared/services/cities.service';
+import { CountriesService } from '../../shared/services/countries.service';
 
 
 @Component({

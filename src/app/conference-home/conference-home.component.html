@@ -1,0 +1,4 @@
+<div class="container">
+  <app-conference-filter (conferencesFilter)="onSearchCriteriaGet($event)"></app-conference-filter>
+  <app-conference-list [searchCriteria]="conferenceSearchCriteria"></app-conference-list>
+</div>

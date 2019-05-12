@@ -8,9 +8,4 @@ import { ConferenceSearchCriteria } from './shared/models/conference-search-crit
 })
 export class AppComponent {
   title = 'Angular App For Dev\'s Output';
-  conferenceSearchCriteria: ConferenceSearchCriteria;
-
-  onSearchCriteriaGet(searchCriteria: ConferenceSearchCriteria) {
-    this.conferenceSearchCriteria = searchCriteria;
-  }
 }
