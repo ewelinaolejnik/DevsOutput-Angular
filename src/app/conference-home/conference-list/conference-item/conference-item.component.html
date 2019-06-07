@@ -1,0 +1,9 @@
+ <div class="card m-1">
+   <div class="card-header bg-info text-white">{{conference.name}}</div>
+   <div class="card-body">
+       <p class="card-text">{{conference.city.name}}, {{conference.country.name}}</p>
+       <p class="card-text">{{conference.dateFrom | date:'longDate'}}
+         <span *ngIf="conference.dateTo">- {{conference.dateTo | date:'longDate'}}</span>
+      </p>
+   </div>
+ </div>
