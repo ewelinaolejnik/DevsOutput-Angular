@@ -1,23 +1,39 @@
-import { City } from '../models/city.model';
-import { Country } from '../models/country.model';
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { map } from 'rxjs/operators';
+import { Conference } from '../models/conference.model';
+import { ConferenceSearchCriteria } from '../models/conference-search-criteria.model';
+import { Observable } from 'rxjs';
 
+
+@Injectable()
 export class ConferencesService {
-  conferences = [
-    {
-      id: 1,
-      name: 'Test Conference 1',
-      city: new City(1, 'Warsaw', 1),
-      country: new Country(1, 'Poland'),
-      dateFrom: new Date(2019, 8, 10),
-      dateTo: new Date(2019, 8, 10)
-    },
-    {
-      id: 2,
-      name: 'Test Conference 2',
-      city: new City(3, 'London', 2),
-      country: new Country(1, 'UK'),
-      dateFrom: new Date(2019, 9, 10),
-      dateTo: null
+
+  constructor(private http: HttpClient) {
+    this.http = http;
+  }
+
+  getAll(pageNumber, pageSize, searchCriteria: ConferenceSearchCriteria): Observable<{ conferences: Conference[], count: number }> {
+    let url = `http://localhost:5050/conferences?page=${pageNumber}&pageSize=${pageSize}`;
+    if (searchCriteria) {
+      if (searchCriteria.name) {
+        url += `&name=${searchCriteria.name}`;
+      }
+      if (searchCriteria.cityId) {
+        url += `&cityId=${searchCriteria.cityId}`;
+      }
+      if (searchCriteria.countryId) {
+        url += `&countryId=${searchCriteria.countryId}`;
+      }
     }
-  ];
+    return this.http.get<any>(url)
+      .pipe(map(result => {
+        const conferences = result.rows.map(conference => {
+          conference.country = conference.city.country;
+          delete conference.city.country;
+          return conference;
+        });
+        return { conferences, count: result.count };
+      }));
+  }
 }

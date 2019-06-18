@@ -1,8 +1,18 @@
 <div class="container mt-4">
-  <div class="row">
+  <div class="row" *ngIf='conferences'>
     <app-conference-item
-      *ngFor="let conference of conferences | filterConferences:searchCriteria"
+      *ngFor="let conference of conferences"
       [conference]="conference">
     </app-conference-item>
   </div>
+  <div class="row" *ngIf="!conferences">
+    <p>Loading...</p>
+  </div>
+
+  <div class="row mt-4">
+    <div class="mx-auto">
+    <button *ngFor="let pageNumber of pageNumbers" type="button" (click)="onPageClicked(pageNumber)" class="btn btn-primary mr-1">{{pageNumber}}</button>
+    </div>
+  </div>
+
 </div>

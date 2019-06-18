@@ -1,7 +1,14 @@
 import { City } from '../models/city.model';
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
+@Injectable()
 export class CitiesService {
-  cities: City[] = [new City(1, 'Warsaw', 1), new City(2, 'Lodz', 1),
-  new City(3, 'London', 2), new City(4, 'Manchester', 2),
-  new City(5, 'Berlin', 3), new City(5, 'Munich', 3)]
+  constructor(private http: HttpClient) {
+    this.http = http;
+  }
+
+  getAll() {
+    return this.http.get<City[]>('http://localhost:5050/cities');
+  }
 }

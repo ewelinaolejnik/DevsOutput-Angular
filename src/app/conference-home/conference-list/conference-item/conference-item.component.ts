@@ -7,4 +7,5 @@ import { Conference } from 'src/app/shared/models/conference.model';
 })
 export class ConferenceItemComponent {
   @Input() conference: Conference;
+
 }

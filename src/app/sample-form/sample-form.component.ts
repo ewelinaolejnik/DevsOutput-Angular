@@ -16,8 +16,12 @@ export class SampleFormComponent implements OnInit {
   selectedCities: City[];
 
   constructor(private citiesService: CitiesService, private countriesService: CountriesService) {
-    this.countries = countriesService.countries;
-    this.cities = citiesService.cities;
+    countriesService.getAll().subscribe((countries: Country[]) => {
+      this.countries = countries;
+    });
+    citiesService.getAll().subscribe((cities: City[]) => {
+      this.cities = cities;
+    });
   }
 
   ngOnInit() {}
